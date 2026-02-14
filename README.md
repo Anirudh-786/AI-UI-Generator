@@ -1,225 +1,36 @@
-# 🚀 AI UI Generator
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-### Deterministic LLM-Driven UI Builder (Planner → Generator → Explainer Architecture)
+## Getting Started
 
----
+First, run the development server:
 
-## 📌 Overview
-
-AI UI Generator is a structured, deterministic UI generation system that converts natural language instructions into controlled React UI layouts using a strict component library.
-
-Unlike typical AI UI tools that hallucinate HTML or break layouts, this system enforces architectural discipline using:
-
-* 🔒 Component whitelist validation
-* 🧠 Multi-agent architecture (Planner / Generator / Explainer)
-* 🔁 Version control with rollback
-* ⚙️ Deterministic backend modification logic
-* 🛡️ Secure API key handling
-
----
-
-## 🧠 Architecture
-
-The system is built around three clearly separated agents:
-
----
-
-### 1️⃣ Planner Agent (Structured JSON Designer)
-
-The Planner converts user input into structured JSON using only approved components.
-
-**Allowed Components:**
-
-* Button
-* Card
-* Input
-* Table
-* Modal
-* Sidebar
-* Navbar
-* Chart
-
-**Planner Constraints:**
-
-* No HTML elements
-* No inline styles
-* No hallucinated components
-* Returns valid JSON only
-* Preserves structure during modification
-
-Example Planner Output:
-
-```json
-{
-  "components": [
-    {
-      "type": "Card",
-      "props": {},
-      "children": [
-        {
-          "type": "Input",
-          "props": { "placeholder": "Username" },
-          "children": []
-        },
-        {
-          "type": "Input",
-          "props": { "placeholder": "Password" },
-          "children": []
-        },
-        {
-          "type": "Button",
-          "props": { "label": "Login" },
-          "children": []
-        }
-      ]
-    }
-  ]
-}
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 2️⃣ Generator Agent (Strict JSX Compiler)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-The Generator transforms structured JSON into valid JSX.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-**Generator Restrictions:**
+## Learn More
 
-* Uses only approved components
-* No wrapper divs
-* No React.Fragment
-* No new components
-* No inline styles
-* No HTML tags
+To learn more about Next.js, take a look at the following resources:
 
-This ensures:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-* Clean output
-* Predictable rendering
-* Zero hallucinated layout wrappers
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-### 3️⃣ Explainer Agent (Transparent Reasoning Layer)
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-The Explainer describes:
-
-* Why components were selected
-* How layout was structured
-* What changed during modification
-
-This improves clarity and evaluation transparency.
-
----
-
-## 🔁 Deterministic Modification System
-
-Removal operations are handled server-side — not by the LLM.
-
-When the user types:
-
-```
-remove register button
-```
-
-The backend:
-
-* Searches components by label
-* Matches case-insensitively
-* Removes only exact matches
-* Preserves the rest of the layout
-
-This prevents:
-
-* Over-removal
-* Accidental layout destruction
-* AI hallucinated deletions
-
----
-
-## 🔄 Version Control
-
-Each generation stores:
-
-* Structured plan
-* Generated JSX
-* Explanation
-
-Users can:
-
-* Rollback to previous versions
-* Continue modification from any state
-
-This demonstrates state-aware UI evolution.
-
----
-
-## 🛡️ Safety Layer
-
-A validation system scans generated JSX and blocks:
-
-* Unauthorized components
-* HTML elements
-* Hallucinated wrappers
-* React imports
-* Container / Layout components
-
-Only the approved UI component library is allowed.
-
----
-
-## 🏗 Tech Stack
-
-* Next.js (App Router)
-* TypeScript
-* Groq (LLaMA 3.1 model)
-* Custom deterministic backend logic
-* Recursive JSON-based UI renderer
-* Strict component validation
-
----
-
-
-## 🧪 Example Workflow
-
-1. create login form
-2. add register button
-3. remove register button
-4. rollback to version 1
-
-The system updates deterministically.
-
----
-
-## 🎯 Key Engineering Strengths
-
-✔ Deterministic architecture
-✔ Strict component governance
-✔ Safe LLM orchestration
-✔ Backend-controlled modification
-✔ Version-aware UI state
-✔ No hallucinated layout elements
-✔ Clean JSX generation
-
----
-
-## 🏁 Conclusion
-
-This project demonstrates how Large Language Models can be safely integrated into UI systems using:
-
-* Structured constraints
-* Deterministic safeguards
-* Controlled component libraries
-* Clear separation of responsibilities
-
-It balances AI flexibility with production-level engineering discipline.
-
----
-
-## 👤 Author
-
-Developed as part of a Full Stack AI UI Generation assignment.
-
----
-
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
